@@ -1,26 +1,38 @@
-from tkinter import *
-from tkinter import messagebox
-def login():
-    
-    if usernameVal.get() ==  '' or passwordVal.get() == '':
-        messagebox.showerror("Error", 'uername or password is empty')
-        return
-    if usernameVal.get() == 'admin' and passwordVal.get() == '1234':
-        messagebox.showinfo("Success", "you are valid user")
-    else:
-        messagebox.showerror("error", "usernam or password is no correct")
+import tkinter as tk
 
-window = Tk()
 
-Label(window, text="username").grid(row=0, column=0, padx=10, pady=10)
-usernameVal = StringVar()
-username_entry = Entry(window, width=15,textvariable=usernameVal)
-username_entry.grid(row=0, column=1, padx=10, pady=10)
+class TodoApp:
+    def __init__(self):
+        self.root = tk.Tk()
 
-Label(window, text="password").grid(row=1, column=0, padx=10, pady=10)
-passwordVal = StringVar()
-password_entry = Entry(window, width=15, show='*', textvariable=passwordVal)
-password_entry.grid(row=1, column=1, padx=10, pady=10)
+        self.app_title = "Todo App"
+        self.window_width = 1000
+        self.window_height = 650
+        self.min_width = 900
+        self.min_height = 600
+        self.background_color = "#F5F7FB"
+        self.exit_button = tk.Button(self.root, text="Exit", command=self.root.destroy)
+        self.set_up_window()
 
-Button(window, text="Login", command=login).grid(row=2, column=0, columnspan=2, sticky="ew")
-mainloop()
+    def set_up_window(self):
+        self.root.title(self.app_title)
+        self.root.configure(bg=self.background_color)
+        self.root.minsize(self.min_width, self.min_height)
+        self.exit_button.pack()
+        self.center_window()
+
+    def run(self):
+        self.root.mainloop()
+
+    def center_window(self):
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+
+        x = screen_width // 2 - self.window_width // 2
+        y = screen_height // 2 - self.window_height // 2
+        self.root.geometry(f"{self.window_width}x{self.window_height}+{x}+{y}")
+        self.root.overrideredirect(True)
+
+
+app = TodoApp()
+app.run()
