@@ -1,28 +1,27 @@
 # import tkinter as tk
 
 # root = tk.Tk()
-# root.title("کار با Pack")
-# root.geometry("300x250")
+# root.geometry("300x150")
 
-# tk.Label(root, text="ردیف 1", bg="lightblue").pack(fill="x")
-# tk.Label(root, text="ردیف 2", bg="lightgreen").pack(fill="x")
-# tk.Label(root, text="ردیف 3", bg="lightyellow").pack(fill="x")
-# tk.Label(root, text="ردیف 4", bg="red").pack(fill="x")
+# tk.Button(root, text="چپ").pack(side="right", padx=5, pady=20)
+# tk.Button(root, text="وسط").pack(side="right", padx=5, pady=20)
+# tk.Button(root, text="راست").pack(side="right", padx=5, pady=20)
 
 # root.mainloop()
+
 
 import tkinter as tk
 
 root = tk.Tk()
-root.geometry("300x300")
+root.title("کار با Grid")
+root.geometry("300x150")
 
-# بدون fill و expand
-tk.Label(root, text="بدون تنظیمات", bg="lightcoral").pack()
+tk.Label(root, text="نام:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
+tk.Entry(root).grid(row=0, column=1, padx=10, pady=10)
 
-# با fill="x" - فقط عرض را پر می‌کند
-tk.Label(root, text="fill=x", bg="lightblue").pack(fill="x")
+tk.Label(root, text="نام خانوادگی:").grid(row=1, column=0, padx=10, pady=10, sticky="e")
+tk.Entry(root).grid(row=1, column=1, padx=10, pady=10)
 
-# با expand=True - فضای اضافی را اشغال می‌کند
-tk.Label(root, text="expand=True", bg="lightgreen").pack(expand=True, fill="both")
+tk.Button(root, text="ثبت").grid(row=2, column=0, columnspan=2, pady=10, sticky="news")
 
 root.mainloop()
